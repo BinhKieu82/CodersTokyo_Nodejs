@@ -26,7 +26,6 @@ module.exports.create = function(req, res) {
 module.exports.get = function(req, res) {
   var id = req.params.productid;
   var product = db.get('products').find({ id: id }).value();
-  console.log(id);
   res.render('products/view', {
     product: product
   });
