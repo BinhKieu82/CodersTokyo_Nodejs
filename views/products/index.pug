@@ -1,0 +1,14 @@
+h1 Products
+
+a(href="/products/create") New
+
+form(action="/products/search", method="GET")
+  input(type="text", name="q")
+  button Search
+
+ul
+  each product in products
+    li
+      span= product.name
+      span &nbsp;
+      a(href="/products/" + product.id) View

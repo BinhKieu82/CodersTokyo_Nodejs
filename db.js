@@ -6,11 +6,8 @@ const db = low(adapter);
 
 // Set some defaults (required if your JSON file is empty)
 db.defaults({ users: [] })
-  .write()
+  .write();
+db.defaults({ products: [] })
+  .write();
 
-const dbLow = db.get('users').value();
-
-module.exports = {
-  bd,
-  dbLow
-};
+module.exports = db;

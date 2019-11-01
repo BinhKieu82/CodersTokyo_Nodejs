@@ -12,5 +12,15 @@
       "name": "Binh",
       "id": "J_05enIw"
     }
+  ],
+  "products": [
+    {
+      "name": "Mobile",
+      "id": "5KEyOklH"
+    },
+    {
+      "name": "Laptop",
+      "id": "OpGznmqR"
+    }
   ]
 }

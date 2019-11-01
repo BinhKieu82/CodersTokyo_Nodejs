@@ -1,5 +1,9 @@
 const express = require('express');
+const shortid = require('shortid');
+const db = require('../db');
+
 const router = express.Router();
+const dbLow = db.get('users').value();
 
 router.get('/', function(req, res) {
   res.render('users/index', {
@@ -12,7 +16,6 @@ router.get('/search', function(req, res) {
   var matchedUsers = dbLow.filter(function(user) {
     return user.name.toLowerCase().indexOf(ques.toLowerCase()) !== -1;
   });
-  console.log(matchedUsers);
   res.render ('users/index', {
     users: matchedUsers
   });
