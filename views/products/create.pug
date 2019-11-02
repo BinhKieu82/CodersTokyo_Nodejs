@@ -3,8 +3,21 @@ extend ../layouts/common
 block content
   h1 Create product
 
-  form(action="/products/create", method="POST")
-    lable Name
-    input(type="text" name="name")
+  if errors
+    each error in errors
+      .alert.alert-danger=error
 
-    button(class="btn btn-primary ml-2") Create
+  form(action="/products/create", method="POST")
+    .form-group
+      lable(for="name") Name
+      input#name.form-control(type="text" name="name", value=values ? values.name : '')
+
+    .form-group
+      lable(for="version") Version
+      input#version.form-control(type="text" name="version", value=values ? values.version : '')
+    
+    .form-group
+      lable(for="quality") Quality
+      input#quality.form-control(type="text" name="quality", value=values ? values.quality : '')
+
+    button.btn.btn-primary Create
