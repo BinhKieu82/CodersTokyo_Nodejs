@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const userRoute = require('./routers/user.route');
 const productRoute = require('./routers/product.route');
+const authRoute = require('./routers/auth.route');
+
+const authMiddleware = require('./middlewares/auth.middleware');
 
 const port = 3000;
 
@@ -12,6 +16,7 @@ app.set('views', './views');
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
 
 app.use(express.static('public'));
 
@@ -23,8 +28,9 @@ app.get('/', function(req, res) {
 
 
 
-app.use('/users', userRoute);
-app.use('/products', productRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/products', authMiddleware.requireAuth, productRoute);
+app.use('/auth', authRoute);
 
 app.listen(port, () =>
   console.log('Server listening on port:', port)
