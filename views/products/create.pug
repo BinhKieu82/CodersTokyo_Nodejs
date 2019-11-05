@@ -11,10 +11,14 @@ block content
     .form-group
       lable(for="name") Name
       input#name.form-control(type="text" name="name", value=values ? values.name : '')
+    
+    .form-group
+      lable(for="image") Image
+      input#image.form-control(type="text" name="image", value=values ? values.image : '')
 
     .form-group
-      lable(for="version") Version
-      input#version.form-control(type="text" name="version", value=values ? values.version : '')
+      lable(for="description") Description
+      input#description.form-control(type="text" name="description", value=values ? values.description : '')
     
     .form-group
       lable(for="quality") Quality
